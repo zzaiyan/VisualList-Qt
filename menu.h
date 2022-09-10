@@ -16,6 +16,11 @@ class Menu : public QWidget {
   explicit Menu(QWidget* parent = nullptr);
   ~Menu();
 
+ private slots:
+  void on_buttonSeq_clicked();
+
+  void on_buttonLink_clicked();
+
  private:
   Ui::Menu* ui;
   VecTest* vecTest;
