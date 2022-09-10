@@ -55,24 +55,27 @@ void Home::on_resetButton_clicked() {
 void Home::on_delButton_clicked() {
   QModelIndex curIndex = sel->currentIndex();  //获取模型索引
   //  ui->lineEdit->setText(QString::number(curIndex.row()));
-  delete vec[curIndex.row()];
-  vec.remove(curIndex.row());
-  if (curIndex.row() == model->rowCount() - 1)  //最后一行
-    model->removeRow(curIndex.row());           //删除最后一行
-  else {
-    model->removeRow(curIndex.row());  //删除一行，并重新设置当前选择行
-    sel->setCurrentIndex(curIndex, QItemSelectionModel::Select);
+  if (curIndex.row() >= 0 && curIndex.row() < vec.size()) {
+    delete vec[curIndex.row()];
+    vec.remove(curIndex.row());
+    if (curIndex.row() == model->rowCount() - 1)  //最后一行
+      model->removeRow(curIndex.row());           //删除最后一行
+    else {
+      model->removeRow(curIndex.row());  //删除一行，并重新设置当前选择行
+      sel->setCurrentIndex(curIndex, QItemSelectionModel::Select);
+    }
   }
 }
 
 void Home::on_setButton_clicked() {
   int idx = sel->currentIndex().row();  //获取索引
-  vec[idx]->setText(ui->lineEdit->text());
+  if (idx >= 0 && idx < vec.size())
+    vec[idx]->setText(ui->lineEdit->text());
 }
 
 void Home::on_upButton_clicked() {
   QModelIndex curIndex = sel->currentIndex();  //获取模型索引
-  if (curIndex.row() > 0) {
+  if (curIndex.row() > 0 && curIndex.row() < vec.size()) {
     swap(curIndex.row(), curIndex.row() - 1);
     sel->setCurrentIndex(curIndex.siblingAtRow(sel->currentIndex().row() - 1),
                          QItemSelectionModel::Select);
@@ -83,7 +86,7 @@ void Home::on_upButton_clicked() {
 
 void Home::on_downButton_clicked() {
   QModelIndex curIndex = sel->currentIndex();  //获取模型索引
-  if (curIndex.row() < vec.size() - 1) {
+  if (curIndex.row() >= 0 && curIndex.row() < vec.size() - 1) {
     swap(curIndex.row(), curIndex.row() + 1);
     sel->setCurrentIndex(curIndex.siblingAtRow(sel->currentIndex().row() + 1),
                          QItemSelectionModel::Select);
@@ -93,17 +96,23 @@ void Home::on_downButton_clicked() {
 }
 
 void Home::on_insBeforeButton_clicked() {
-  QModelIndex curIndex = sel->currentIndex();  //获取模型索引
-  vec.insert(curIndex.row(), new QStandardItem(ui->lineEdit->text()));
-  model->insertRow(curIndex.row());
-  model->setItem(curIndex.row(), vec[curIndex.row()]);
-  ui->lineEdit->setText(QString::number(vec.size()));
+  int idx = sel->currentIndex().row();
+  if (idx == -1)
+    idx = 0;
+  vec.insert(idx, new QStandardItem(ui->lineEdit->text()));
+  model->insertRow(idx);
+  model->setItem(idx, vec[idx]);
+
+  //  ui->lineEdit->setText(QString::number(vec.size()));
 }
 
 void Home::on_insAfterButton_clicked() {
-  QModelIndex curIndex = sel->currentIndex();  //获取模型索引
-  vec.insert(curIndex.row() + 1, new QStandardItem(ui->lineEdit->text()));
-  model->insertRow(curIndex.row() + 1);
-  model->setItem(curIndex.row() + 1, vec[curIndex.row() + 1]);
-  ui->lineEdit->setText(QString::number(vec.size()));
+  int idx = sel->currentIndex().row() + 1;
+  if (idx == 0)
+    idx = vec.size();
+  idx = std::max(idx, 0);
+  vec.insert(idx, new QStandardItem(ui->lineEdit->text()));
+  model->insertRow(idx);
+  model->setItem(idx, vec[idx]);
+  //  ui->lineEdit->setText(QString::number(vec.size()));
 }
