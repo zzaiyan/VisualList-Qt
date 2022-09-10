@@ -1,10 +1,10 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+#include <algorithm>
+
 #define TT template <typename T>
 #define vec Vector<T>
-
-#include <algorithm>
 
 constexpr int DEFAULT_SIZE = 5;
 

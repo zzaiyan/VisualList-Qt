@@ -1,5 +1,5 @@
-#ifndef LISTTEST_H
-#define LISTTEST_H
+#ifndef VECTEST_H
+#define VECTEST_H
 
 #include <QItemSelectionModel>
 #include <QModelIndex>
@@ -10,16 +10,16 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class ListTest;
+class VecTest;
 }
 QT_END_NAMESPACE
 
-class ListTest : public QWidget {
+class VecTest : public QWidget {
   Q_OBJECT
 
  public:
-  ListTest(QWidget* parent = nullptr);
-  ~ListTest();
+  VecTest(QWidget* parent = nullptr);
+  ~VecTest();
 
  private slots:
   void on_randomButton_clicked();
@@ -32,7 +32,7 @@ class ListTest : public QWidget {
   void on_insAfterButton_clicked();
 
  private:
-  Ui::ListTest* ui;
+  Ui::VecTest* ui;
   QStandardItemModel* model;
   QItemSelectionModel* sel;
   Vector<QStandardItem*> vec;
@@ -40,4 +40,4 @@ class ListTest : public QWidget {
   void refresh();
   void swap(int a, int b);
 };
-#endif  // LISTTEST_H
+#endif  // VECTEST_H

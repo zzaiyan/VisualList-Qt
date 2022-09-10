@@ -1,7 +1,7 @@
-#include "listtest.h"
-#include "ui_listtest.h"
+#include "ui_vectest.h"
+#include "vectest.h"
 
-ListTest::ListTest(QWidget* parent) : QWidget(parent), ui(new Ui::ListTest) {
+VecTest::VecTest(QWidget* parent) : QWidget(parent), ui(new Ui::VecTest) {
   ui->setupUi(this);
   model = new QStandardItemModel(this);
   model->setHorizontalHeaderItem(0, new QStandardItem("数据"));
@@ -12,23 +12,23 @@ ListTest::ListTest(QWidget* parent) : QWidget(parent), ui(new Ui::ListTest) {
   ui->tableView->setColumnWidth(0, 160);
 }
 
-ListTest::~ListTest() {
+VecTest::~VecTest() {
   delete model;
   delete ui;
 }
 
-void ListTest::refresh() {
+void VecTest::refresh() {
   if (model->rowCount() - vec.size() > 0)
     model->removeRows(vec.size(), model->rowCount() - vec.size());
 }
 
-void ListTest::swap(int a, int b) {
+void VecTest::swap(int a, int b) {
   auto temp = vec[a]->text();
   vec[a]->setText(vec[b]->text());
   vec[b]->setText(temp);
 }
 
-void ListTest::on_randomButton_clicked() {
+void VecTest::on_randomButton_clicked() {
   auto eleNum = ui->lineEdit->text().toInt();
 
   for (int i = 0; i < vec.size(); i++)
@@ -45,14 +45,14 @@ void ListTest::on_randomButton_clicked() {
   ui->lineEdit->setText(QString::number(model->rowCount()));
 }
 
-void ListTest::on_resetButton_clicked() {
+void VecTest::on_resetButton_clicked() {
   for (int i = 0; i < vec.size(); i++)
     delete vec[i];
   vec.clear();
   refresh();
 }
 
-void ListTest::on_delButton_clicked() {
+void VecTest::on_delButton_clicked() {
   QModelIndex curIndex = sel->currentIndex();  //获取模型索引
   //  ui->lineEdit->setText(QString::number(curIndex.row()));
   if (curIndex.row() >= 0 && curIndex.row() < vec.size()) {
@@ -67,13 +67,13 @@ void ListTest::on_delButton_clicked() {
   }
 }
 
-void ListTest::on_setButton_clicked() {
+void VecTest::on_setButton_clicked() {
   int idx = sel->currentIndex().row();  //获取索引
   if (idx >= 0 && idx < vec.size())
     vec[idx]->setText(ui->lineEdit->text());
 }
 
-void ListTest::on_upButton_clicked() {
+void VecTest::on_upButton_clicked() {
   QModelIndex curIndex = sel->currentIndex();  //获取模型索引
   if (curIndex.row() > 0 && curIndex.row() < vec.size()) {
     swap(curIndex.row(), curIndex.row() - 1);
@@ -84,7 +84,7 @@ void ListTest::on_upButton_clicked() {
   //  ui->lineEdit->setText(QString::number(curIndex.row()));
 }
 
-void ListTest::on_downButton_clicked() {
+void VecTest::on_downButton_clicked() {
   QModelIndex curIndex = sel->currentIndex();  //获取模型索引
   if (curIndex.row() >= 0 && curIndex.row() < vec.size() - 1) {
     swap(curIndex.row(), curIndex.row() + 1);
@@ -95,7 +95,7 @@ void ListTest::on_downButton_clicked() {
   //  ui->lineEdit->setText(QString::number(curIndex.row()));
 }
 
-void ListTest::on_insBeforeButton_clicked() {
+void VecTest::on_insBeforeButton_clicked() {
   int idx = sel->currentIndex().row();
   if (idx == -1)
     idx = 0;
@@ -106,7 +106,7 @@ void ListTest::on_insBeforeButton_clicked() {
   //  ui->lineEdit->setText(QString::number(vec.size()));
 }
 
-void ListTest::on_insAfterButton_clicked() {
+void VecTest::on_insAfterButton_clicked() {
   int idx = sel->currentIndex().row() + 1;
   if (idx == 0)
     idx = vec.size();

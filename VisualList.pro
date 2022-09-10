@@ -9,18 +9,23 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    listtest.cpp \
+    chaintest.cpp \
     main.cpp \
-    menu.cpp
+    menu.cpp \
+    vectest.cpp
 
 HEADERS += \
+    LinkList.h \
+    ListNode.h \
     Vector.h \
-    listtest.h \
-    menu.h
+    chaintest.h \
+    menu.h \
+    vectest.h
 
 FORMS += \
-    listtest.ui \
-    menu.ui
+    chaintest.ui \
+    menu.ui \
+    vectest.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
