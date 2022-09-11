@@ -1,5 +1,5 @@
-#include "ui_vectest.h"
 #include "vectest.h"
+#include "ui_vectest.h"
 
 VecTest::VecTest(QWidget* parent) : QWidget(parent), ui(new Ui::VecTest) {
   ui->setupUi(this);
@@ -9,7 +9,7 @@ VecTest::VecTest(QWidget* parent) : QWidget(parent), ui(new Ui::VecTest) {
   ui->tableView->setModel(model);
   ui->tableView->setModel(model);         //设置数据模型
   ui->tableView->setSelectionModel(sel);  //设置选择模型
-  ui->tableView->setColumnWidth(0, 160);
+  //  ui->tableView->setColumnWidth(0, 160);
 }
 
 VecTest::~VecTest() {
@@ -37,6 +37,10 @@ void VecTest::on_randomButton_clicked() {
 
   for (int i = 0; i < eleNum; i++)
     vec.push_back(new QStandardItem(QString::number(rand() % 100)));
+
+  //  vec.remove("77");
+
+  model->removeRows(0, model->rowCount());
 
   for (int i = 0; i < vec.size(); i++)
     model->setItem(i, 0, vec[i]);
@@ -115,4 +119,29 @@ void VecTest::on_insAfterButton_clicked() {
   model->insertRow(idx);
   model->setItem(idx, vec[idx]);
   //  ui->lineEdit->setText(QString::number(vec.size()));
+}
+
+void VecTest::on_delByValue_clicked() {
+  auto text = ui->lineEdit->text();
+
+  auto newSpace = new QStandardItem*[vec.size()];
+
+  //  if (!text.isEmpty()) {
+  //    int newSize = 0;
+  //    auto newSpace = new QStandardItem*[vec._size];
+  //    for (int i = 0; i < vec._size; i++)
+  //      if (vec[i]->text() != text)
+  //        newSpace[newSize++] = vec[i];
+
+  //    for (int i = 0; i < vec._size; i++)
+  //      delete vec[i];
+  //    delete[] vec._data;
+
+  //    vec._data = newSpace, vec._size = newSize;
+  //  }
+
+  //  for (int i = 0; i < vec.size(); i++)
+  //    model->setItem(i, 0, vec[i]);
+
+  refresh();
 }

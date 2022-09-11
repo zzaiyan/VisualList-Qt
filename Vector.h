@@ -1,6 +1,7 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+#include <QString>
 #include <algorithm>
 
 #define TT template <typename T>
@@ -9,6 +10,7 @@
 constexpr int DEFAULT_SIZE = 5;
 
 TT class Vector {
+ public:
   T* _data;
   int _size, _capacity;
 
@@ -39,7 +41,7 @@ TT T& vec::operator[](int r) {
 TT bool vec::reserve(int s) {
   if (s <= _size)
     return false;
-  T* newSpace = new T[s];
+  T* newSpace = new T[_capacity = s];
   for (int i = 0; i < _size; i++)
     newSpace[i] = _data[i];
   delete[] _data;

@@ -31,6 +31,8 @@ class VecTest : public QWidget {
   void on_insBeforeButton_clicked();
   void on_insAfterButton_clicked();
 
+  void on_delByValue_clicked();
+
  private:
   Ui::VecTest* ui;
   QStandardItemModel* model;
