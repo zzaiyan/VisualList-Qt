@@ -10,7 +10,6 @@
 constexpr int DEFAULT_SIZE = 5;
 
 TT class Vector {
- public:
   T* _data;
   int _size, _capacity;
 
@@ -27,6 +26,7 @@ TT class Vector {
   void insert(int r, const T& e);
   void clear();
   void push_back(const T& e);
+  void pop_back();
 };
 
 TT void vec::_init() {
@@ -82,6 +82,11 @@ TT void vec::push_back(const T& e) {
   if (_capacity < _size + 1)
     reserve(_size << 1);
   _data[_size++] = e;
+}
+
+TT void vec::pop_back() {
+  if (_size > 0)
+    _size--;
 }
 
 #undef TT

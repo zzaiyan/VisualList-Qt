@@ -123,25 +123,13 @@ void VecTest::on_insAfterButton_clicked() {
 
 void VecTest::on_delByValue_clicked() {
   auto text = ui->lineEdit->text();
-
-  auto newSpace = new QStandardItem*[vec.size()];
-
-  //  if (!text.isEmpty()) {
-  //    int newSize = 0;
-  //    auto newSpace = new QStandardItem*[vec._size];
-  //    for (int i = 0; i < vec._size; i++)
-  //      if (vec[i]->text() != text)
-  //        newSpace[newSize++] = vec[i];
-
-  //    for (int i = 0; i < vec._size; i++)
-  //      delete vec[i];
-  //    delete[] vec._data;
-
-  //    vec._data = newSpace, vec._size = newSize;
-  //  }
-
-  //  for (int i = 0; i < vec.size(); i++)
-  //    model->setItem(i, 0, vec[i]);
-
-  refresh();
+  if (text.isEmpty())
+    return;
+  for (int i = 0; i < vec.size(); i++)
+    if (vec[i]->text() == text) {
+      model->removeRow(i);
+      delete vec[i];
+      vec.remove(i);
+      i--;
+    }
 }
