@@ -30,7 +30,6 @@ class VecTest : public QWidget {
   void on_downButton_clicked();
   void on_insBeforeButton_clicked();
   void on_insAfterButton_clicked();
-
   void on_delByValue_clicked();
 
  private:

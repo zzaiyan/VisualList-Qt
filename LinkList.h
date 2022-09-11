@@ -9,7 +9,7 @@
 
 TT class LinkList {
   int _size;
-  Node* header;
+  Node *header, *trailer;
 
   void _init();
 
@@ -24,6 +24,7 @@ TT class LinkList {
 TT List::~LinkList() {
   clear();
   delete header;
+  delete trailer;
 }
 
 TT void List::_init() {

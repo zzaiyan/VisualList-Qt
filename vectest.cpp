@@ -128,7 +128,7 @@ void VecTest::on_delByValue_clicked() {
   for (int i = 0; i < vec.size(); i++)
     if (vec[i]->text() == text) {
       model->removeRow(i);
-      delete vec[i];
+      //      delete vec[i];
       vec.remove(i);
       i--;
     }
