@@ -13,6 +13,10 @@ class Item {
   QString data;
   //  int rank;
 
+  void drawRect(int rank);
+  void drawText(int rank);
+  void drawArrow(int rank);
+
  public:
   Item() {}
   Item(QPixmap* p, const QString& str) : pix(p), data(str) {
@@ -20,10 +24,9 @@ class Item {
       data = "Node";
   }
   ~Item() {}
-  void setData(QString& str) { data = str; }
-  void drawRect(int rank);
-  void drawText(int rank);
-  void fillColor(int rank);
+  void setData(const QString& str) { data = str; }
+  QString getData() { return data; }
+  void draw(int rank) { drawRect(rank), drawText(rank), drawArrow(rank); }
 
   static int getX(int rank) {
     int col = rank % WIDTH;

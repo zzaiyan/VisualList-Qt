@@ -3,6 +3,7 @@
 
 #include <QBrush>
 #include <QDebug>
+#include <QInputDialog>
 #include <QLabel>
 #include <QPainter>
 #include <QPen>
@@ -27,8 +28,18 @@ class ChainTest : public QWidget {
   void on_butPushBack_clicked();
   void on_butPushFront_clicked();
   void on_butReset_clicked();
-
   void on_butMake_clicked();
+  void on_butInsByValue_clicked();
+
+  void on_butPopFront_clicked();
+
+  void on_butPopBack_clicked();
+
+  void on_butDelByValue_clicked();
+
+  void on_butReverse_clicked();
+
+  void on_butRandom_clicked();
 
  private:
   Ui::ChainTest* ui;

@@ -154,6 +154,19 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="butRandom">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>随机插入</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="butPushFront">
         <property name="minimumSize">
          <size>
@@ -180,7 +193,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="butPushFront_3">
+       <widget class="QPushButton" name="butInsByValue">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -193,7 +206,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="butPushFront_2">
+       <widget class="QPushButton" name="butPopFront">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -206,7 +219,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="butPushBack_2">
+       <widget class="QPushButton" name="butPopBack">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -219,7 +232,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="butPushFront_4">
+       <widget class="QPushButton" name="butDelByValue">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -232,7 +245,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="butMake_2">
+       <widget class="QPushButton" name="butReverse">
         <property name="minimumSize">
          <size>
           <width>0</width>
