@@ -3,13 +3,14 @@
 
 #include <QString>
 #include <algorithm>
+#include "baseList.h"
 
 #define TT template <typename T>
 #define vec Vector<T>
 
 constexpr int DEFAULT_SIZE = 5;
 
-TT class Vector {
+TT class Vector : public BaseList<T> {
   T* _data;
   int _size, _capacity;
 
@@ -17,6 +18,7 @@ TT class Vector {
 
  public:
   Vector() { _init(); }
+  ~Vector();
   int size() { return _size; }
   T& operator[](int r);
   T& back() { return _data[_size - 1]; }
@@ -28,6 +30,11 @@ TT class Vector {
   void push_back(const T& e);
   void pop_back();
 };
+
+TT vec::~Vector() {
+  if (_data)
+    delete[] _data;
+}
 
 TT void vec::_init() {
   _data = new T[_capacity = DEFAULT_SIZE];

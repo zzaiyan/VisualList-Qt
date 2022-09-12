@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     chaintest.cpp \
+    item.cpp \
     main.cpp \
     menu.cpp \
     vectest.cpp
@@ -18,7 +19,9 @@ HEADERS += \
     LinkList.h \
     ListNode.h \
     Vector.h \
+    baseList.h \
     chaintest.h \
+    item.h \
     menu.h \
     vectest.h
 

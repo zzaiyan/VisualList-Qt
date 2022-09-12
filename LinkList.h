@@ -2,12 +2,13 @@
 #define LINKLIST_H
 
 #include "ListNode.h"
+#include "baseList.h"
 
 #define TT template <typename T>
 #define List LinkList<T>
 #define Node ListNode<T>
 
-TT class LinkList {
+TT class LinkList : public BaseList<T> {
   int _size;
   Node *header, *trailer;
 
