@@ -10,7 +10,7 @@ TT struct ListNode {
   T data;
   Node *pred, *succ;
 
-  ListNode() : pred(nullptr), succ(nullptr) { data = std::move(T{}); }
+  ListNode() : data(std::move(T{})), pred(nullptr), succ(nullptr) {}
   ListNode(const T& e, Node* p = nullptr, Node* s = nullptr)
       : data(e), pred(p), succ(s) {}
   Node* insertAsPred(const T& e);

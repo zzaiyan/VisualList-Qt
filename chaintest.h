@@ -7,6 +7,7 @@
 #include <QPainter>
 #include <QPen>
 #include <QPixmap>
+#include <QTime>
 #include <QWidget>
 #include "LinkList.h"
 #include "item.h"
@@ -22,6 +23,13 @@ class ChainTest : public QWidget {
   explicit ChainTest(QWidget* parent = nullptr);
   ~ChainTest();
 
+ private slots:
+  void on_butPushBack_clicked();
+  void on_butPushFront_clicked();
+  void on_butReset_clicked();
+
+  void on_butMake_clicked();
+
  private:
   Ui::ChainTest* ui;
   QLabel* screen;
@@ -29,7 +37,8 @@ class ChainTest : public QWidget {
   LinkList<Item>* list;
 
   void refresh() { screen->setPixmap(*pix); }
-  void drawRect(int r);
+  void repaint();
+  void sleep(int ms);
 };
 
 #endif  // CHAINTEST_H

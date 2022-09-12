@@ -110,15 +110,6 @@
       <string>操作</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
-      <property name="spacing">
-       <number>12</number>
-      </property>
-      <property name="leftMargin">
-       <number>12</number>
-      </property>
-      <property name="rightMargin">
-       <number>12</number>
-      </property>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <property name="sizeConstraint">
@@ -150,7 +141,7 @@
        </layout>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="butMake">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -163,7 +154,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="butPushFront">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -171,12 +162,12 @@
          </size>
         </property>
         <property name="text">
-         <string>向后插入</string>
+         <string>头插</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="butPushBack">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -184,7 +175,85 @@
          </size>
         </property>
         <property name="text">
-         <string>向前插入</string>
+         <string>尾插</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="butPushFront_3">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>按值插入</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="butPushFront_2">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>头删</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="butPushBack_2">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>尾删</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="butPushFront_4">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>按值删除</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="butMake_2">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>反转</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="butReset">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>清空</string>
         </property>
        </widget>
       </item>

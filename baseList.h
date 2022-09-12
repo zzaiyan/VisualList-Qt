@@ -4,8 +4,8 @@
 template <typename T>
 class BaseList {
  public:
-  BaseList() = default;
-  virtual ~BaseList() = 0;
+  BaseList() {}
+  virtual ~BaseList() {}
 };
 
 #endif  // BASELIST_H
