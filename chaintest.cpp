@@ -52,8 +52,15 @@ void ChainTest::on_butPushFront_clicked() {
 }
 
 void ChainTest::on_butReset_clicked() {
-  list->clear();
-  repaint();
+  ui->butReset->setEnabled(0);
+  ui->butReset->setText("正在清空……");
+  while (list->size()) {
+    list->pop_back();
+    repaint();
+    sleep(100);
+  }
+  ui->butReset->setEnabled(1);
+  ui->butReset->setText("清空");
 }
 
 void ChainTest::on_butMake_clicked() {
@@ -117,11 +124,15 @@ void ChainTest::on_butReverse_clicked() {
 
 void ChainTest::on_butRandom_clicked() {
   if (list->size()) {
+    ui->butRandom->setEnabled(0);
+    ui->butRandom->setText("正在插入……");
     int eleNum = ui->lineEdit->text().toInt();
     for (int i = 0; i < eleNum; i++) {
       list->push_back(Item(pix, QString::number(rand() % 100 + 1)));
       repaint();
-      sleep(150);
+      sleep(100);
     }
+    ui->butRandom->setEnabled(1);
+    ui->butRandom->setText("随机插入");
   }
 }

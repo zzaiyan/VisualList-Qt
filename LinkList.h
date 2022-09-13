@@ -49,15 +49,15 @@ TT class LinkList : public BaseList<T> {
   // 尾插
   Node* push_back(const T& e);
   // 首删
-  T& pop_front() { return remove(0); }
+  T& pop_front() { return remove(header->succ); }
   // 末删
-  T& pop_back() { return remove(_size - 1); }
+  T& pop_back() { return remove(trailer->pred); }
   // 循秩访问
   T& operator[](int r);
   // 复制节点(用于拷贝构造or赋值)
   void copyNodes(Node* p, int n);
   // 删除节点
-  void remove(Node* p);
+  T& remove(Node* p);
   // 清空内容
   int clear();
   // 唯一化
@@ -165,11 +165,13 @@ TT Node* List::push_back(const T& e) {
   return insertBefore(trailer, e);
 }
 
-TT void List::remove(Node* p) {
+TT T& List::remove(Node* p) {
   _size--;
   p->pred->succ = p->succ;
   p->succ->pred = p->pred;
+  auto temp = p->data;
   delete p;
+  return temp;
 }
 
 TT int List::clear() {
