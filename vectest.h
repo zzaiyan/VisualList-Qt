@@ -1,6 +1,7 @@
 #ifndef VECTEST_H
 #define VECTEST_H
 
+#include <QInputDialog>
 #include <QItemSelectionModel>
 #include <QModelIndex>
 #include <QStandardItem>
@@ -31,6 +32,8 @@ class VecTest : public QWidget {
   void on_insBeforeButton_clicked();
   void on_insAfterButton_clicked();
   void on_delByValue_clicked();
+
+  void on_insByValue_clicked();
 
  private:
   Ui::VecTest* ui;

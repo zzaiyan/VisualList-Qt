@@ -133,3 +133,17 @@ void VecTest::on_delByValue_clicked() {
       i--;
     }
 }
+
+void VecTest::on_insByValue_clicked() {
+  auto text = ui->lineEdit->text();
+  auto pos = QInputDialog::getText(this, "Input", "插入到该值之后：");
+  if (text.isEmpty())
+    return;
+  for (int i = 0; i < vec.size(); i++)
+    if (vec[i]->text() == pos) {
+      i++;
+      model->insertRow(i);
+      vec.insert(i, new QStandardItem(text));
+      model->setItem(i, vec[i]);
+    }
+}

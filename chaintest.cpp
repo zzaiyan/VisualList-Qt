@@ -78,7 +78,8 @@ void ChainTest::on_butInsByValue_clicked() {
     for (auto p = list->begin(); p != list->end(); p = p->succ)
       if (p->data.getData() == e) {
         list->insertAfter(p, Item(pix, ui->lineEdit->text()));
-        break;
+        p = p->succ;
+        //        break;
       }
     repaint();
   }
